@@ -58,7 +58,7 @@ async def upload_pdf(file: UploadFile = File(...)):
         content = await file.read()
         f.write(content)
 
-    # 🔹 Dummy OCR response (placeholder)
+    # Dummy OCR response (placeholder)
     dummy_response = {
         "file_id": file_id,
         "file_name": file.filename,
