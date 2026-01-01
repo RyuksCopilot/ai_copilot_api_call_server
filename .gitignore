@@ -1,0 +1,64 @@
+# =========================
+# Python cache & compiled
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Catch pycache in ALL subfolders
+**/__pycache__/
+
+# =========================
+# Virtual environments
+# =========================
+venv/
+.env/
+.env.*
+.venv/
+
+# =========================
+# Environment & secrets
+# =========================
+*.env
+.env.local
+.env.production
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Test / Coverage
+# =========================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# =========================
+# Build artifacts
+# =========================
+dist/
+build/
+*.egg-info/
+
+# =========================
+# Media / Uploads
+# =========================
+media/
+**/media/
+uploads/
+**/uploads/
