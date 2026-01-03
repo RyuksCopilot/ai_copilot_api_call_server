@@ -4,7 +4,7 @@ from uuid import UUID
 
 from app.db.database import get_db
 from app.services.historyService import HistoryService
-from app.schemas.history import HistoryCreate, HistoryResponse
+from app.schemas.history import HistoryCreate, HistoryResponse,HistoryBulkRequest
 
 router = APIRouter(prefix="/api/v1/history", tags=["History"])
 
@@ -25,3 +25,13 @@ async def get_history_by_company(
 ):
     service = HistoryService(db)
     return await service.get_history_by_company(company_id)
+
+@router.post("/bulk")
+async def create_history_bulk(
+    payload: HistoryBulkRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    return await HistoryService.bulk_create_history(
+        db=db,
+        items=payload.items,
+    )
