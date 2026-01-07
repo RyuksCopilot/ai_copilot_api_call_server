@@ -59,25 +59,20 @@ async def upload_pdf(file: UploadFile = File(...)):
         f.write(content)
 
     # Dummy OCR response (placeholder)
-    dummy_response = {
-        "file_id": file_id,
-        "file_name": file.filename,
-        "status": "uploaded",
-        "extracted_data": {
-            "invoice_number": "INV-1023",
-            "invoice_date": "2026-01-01",
-            "vendor": "ABC Traders",
-            "total_amount": 45230.50,
-            "currency": "INR",
-            "line_items": [
-                {
-                    "description": "Gardening Service",
-                    "quantity": 1,
-                    "rate": 45230.50
-                }
-            ]
+    dummy_response = [
+        {
+            "from_ledger": "ICICI BANK",
+            "to_ledger": "to_ledger_1",
+            "amount": 100.0,
+            "date":"20250401"
+        },
+        {
+            "from_ledger": "from_ledger_2",
+            "to_ledger": "to_ledger_2",
+            "amount": 200.0,
+            "date":"20250401"
         }
-    }
+    ]
 
     return JSONResponse(
         status_code=200,

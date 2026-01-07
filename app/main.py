@@ -1,12 +1,25 @@
 from fastapi import FastAPI, WebSocket
+from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.api.v1.routes.forward import router as forward_router
 from app.api.v1.routes.history_routes import router as history_router
+from app.api.v1.routes.company_routes import router as company_router
 from app.ws.routes import websocket_handler
 from app.db.init_db import init_db
 
 
 app = FastAPI(title=settings.PROJECT_NAME)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],   # ← THIS enables OPTIONS
+    allow_headers=["*"],
+)
 
 @app.on_event("startup")
 async def startup():
@@ -18,6 +31,7 @@ app.include_router(
     tags=["Forward"]
 )
 app.include_router(history_router)
+app.include_router(company_router)
 
 @app.websocket("/ws/{client_id}")
 async def websocket_endpoint(websocket: WebSocket, client_id: str):
