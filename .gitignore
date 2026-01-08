@@ -62,3 +62,9 @@ media/
 **/media/
 uploads/
 **/uploads/
+
+
+#=========================
+# Dummy test file
+#+++++++++++++++++++++++
+test_scripts/
