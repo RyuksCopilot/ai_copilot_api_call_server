@@ -1,0 +1,54 @@
+[{
+  "bank_name": "AXIS",
+  "table_headers": {
+    "date": ["Tran Date", "Transaction Date"],
+    "description": ["Transaction Particulars"],
+    "amount": ["Amount(INR)"],
+    "type": ["DR/CR"],
+    "balance": ["Balance(INR)"]
+  },
+
+  "debit_rule": {
+    "type_column": "DR/CR",
+    "debit_value": "DR"
+  },
+
+  "credit_rule": {
+    "type_column": "DR/CR",
+    "credit_value": "CR"
+  },
+
+  "party_rules": {
+    "from_party": "extract_after:IMPS|NEFT|UPI",
+    "to_party": "extract_before:STATE BANK|AXIS|HDFC"
+  }
+},
+
+
+{
+  "bank_name": "HDFC",
+  "table_headers": {
+    "date": ["Transaction Date", "Value Date"],
+    "description": ["Transaction Remarks"],
+    "amount": ["Withdrawal (Dr)", "Deposit (Cr)"],
+    "type": ["DR/CR"],
+    "balance": ["Balance"]
+  },
+
+  "debit_rule": {
+    "direct_column": "Withdrawal (Dr)",
+    "na_values": ["NA", "", "-"]
+  },
+
+  "credit_rule": {
+    "direct_column": "Deposit (Cr)",
+    "na_values": ["NA", "", "-"]
+  },
+
+  "party_rules": {
+    "from_party": "extract_after:Payment from|UPI/",
+    "to_party": "static:YOU"
+  }
+}
+
+]

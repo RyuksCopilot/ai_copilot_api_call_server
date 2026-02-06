@@ -1,0 +1,24 @@
+{
+  "pages": [
+    {
+      "index": 0,
+      "markdown": "# AXIS BANK\n\n## DAYITVA ENGINEERING\n\nJoint Holder : - -\n\nDAYITUA ENGINEERING BEHIND GRAM\n\nPANCHAYAT BAP JODHPUR\n\nBAP\n\nBAP\n\nRAJASTHAN-INDIA\n\nPIN342307\n\nCurrency : INR\n\nScheme : CA - BUSINESS ADVANTAGE\n\nCustomer ID : 878532063\n\nIFSC Code : UTIB0001215\n\nMICR Code : 342211103\n\nNominee Registered : Y\n\nCKYC NUMBER : NA\n\nStatement of Axis Account No : 918020001051153 for the period (From : 01-04-2025 To : 30-11-2025)\n\n|  Tran Date | Value Date | Transaction Particulars | Chq No | Amount(INR) | DR/CR | Balance(INR) | Branch Name  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|   |  | OPENING BALANCE |  |  |  | 1376779.38 |   |\n|  01-04-2025 | 01-04-2025 | IMPS/P2A/509108526214/Mukesh Kumar/X204133/STATEBANKOFINDIA/ |  | 8005.90 | DR | 1368773.48 | PHALODI [RJ]  |",
+      "images": [],
+      "dimensions": {
+        "dpi": 200,
+        "height": 638,
+        "width": 1700
+      },
+      "tables": [],
+      "hyperlinks": [],
+      "header": null,
+      "footer": null
+    }
+  ],
+  "model": "mistral-ocr-latest",
+  "usage_info": {
+    "pages_processed": 1,
+    "doc_size_bytes": 57490
+  },
+  "document_annotation": null
+}
