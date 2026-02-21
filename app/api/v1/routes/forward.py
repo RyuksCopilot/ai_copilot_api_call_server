@@ -46,11 +46,10 @@ os.makedirs(MEDIA_DIR, exist_ok=True)
 
 @router.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
-    # Basic validation
+
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="Only PDF files are allowed")
 
-    # Unique filename
     file_id = str(uuid.uuid4())
     filename = f"{file_id}_{file.filename}"
     file_path = os.path.join(MEDIA_DIR, filename)
@@ -60,25 +59,13 @@ async def upload_pdf(file: UploadFile = File(...)):
         content = await file.read()
         f.write(content)
 
-    # Dummy OCR response (placeholder)
     ocr_results = mistral_ocr_results(file_path)
+
     dummy_response = parse_mistral_ocr_response(ocr_results)
-    # dummy_response = [
-    #     {
-    #         "from_ledger": "ICICI BANK",
-    #         "to_ledger": "to_ledger_1",
-    #         "amount": 100.0,
-    #         "date":"20250401"
-    #     },
-    #     {
-    #         "from_ledger": "from_ledger_2",
-    #         "to_ledger": "to_ledger_2",
-    #         "amount": 200.0,
-    #         "date":"20250401"
-    #     }
-    # ]
+
 
     return JSONResponse(
         status_code=200,
         content=dummy_response
+
     )

@@ -1,6 +1,7 @@
-import os
-from mistralai import Mistral
 from typing import Optional
+from mistralai import Mistral
+from google import genai
+from app.core.config import settings
 
 
 class MistralClient:
@@ -8,16 +9,25 @@ class MistralClient:
 
     @classmethod
     def get_client(cls) -> Mistral:
-        """
-        Returns a singleton instance of Mistral client
-        """
         if cls._client is None:
-            api_key = os.getenv("MISTRAL_API_KEY")
-            if not api_key:
-                raise RuntimeError(
-                    "MISTRAL_API_KEY environment variable is not set"
-                )
+            if not settings.MISTRAL_API_KEY:
+                raise RuntimeError("MISTRAL_API_KEY is not set")
 
-            cls._client = Mistral(api_key=api_key)
+            cls._client = Mistral(api_key=settings.MISTRAL_API_KEY)
+
+        return cls._client
+
+class GeminiClient:
+    _client: Optional[genai.Client] = None
+
+    @classmethod
+    def get_client(cls) -> genai.Client:
+        if cls._client is None:
+            if not settings.GEMINI_API_KEY:
+                raise RuntimeError("GEMINI_API_KEY is not set")
+
+            cls._client = genai.Client(
+                api_key=settings.GEMINI_API_KEY
+            )
 
         return cls._client

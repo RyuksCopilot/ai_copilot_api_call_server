@@ -3,9 +3,8 @@ from pathlib import Path
 from mistralai import DocumentURLChunk, ImageURLChunk, TextChunk
 import json
 from pathlib import Path
-from app.ocr_utils.config import client
+# from app.ocr_utils.config import client
 from app.ocr_utils.config import MistralClient
-
 def mistral_ocr_results(file_path: str):
     """
     Extract OCR results from a PDF file using Mistral API
@@ -28,7 +27,8 @@ def mistral_ocr_results(file_path: str):
     pdf_response = client.ocr.process(
         document=DocumentURLChunk(document_url=signed_url.url),
         model="mistral-ocr-latest",
-        include_image_base64=True
+        include_image_base64=True,
+        table_format="html"
     )
     response_dict = json.loads(pdf_response.model_dump_json())
     return response_dict

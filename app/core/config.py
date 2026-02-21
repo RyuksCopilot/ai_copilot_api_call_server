@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     API_V1_PREFIX: str = "/api/v1"
     DATABASE_URL: str
     MISTRAL_API_KEY: str
+    GEMINI_API_KEY: str
 
     class Config:
         env_file = ".env"
