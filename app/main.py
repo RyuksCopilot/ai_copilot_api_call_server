@@ -4,6 +4,7 @@ from app.core.config import settings
 from app.api.v1.routes.forward import router as forward_router
 from app.api.v1.routes.history_routes import router as history_router
 from app.api.v1.routes.company_routes import router as company_router
+from app.api.v1.routes.bank_config_routes import router as bank_config_router
 from app.ws.routes import websocket_handler
 from app.db.init_db import init_db
 
@@ -31,6 +32,7 @@ app.include_router(
     tags=["Forward"]
 )
 app.include_router(history_router)
+app.include_router(bank_config_router)
 app.include_router(company_router)
 
 @app.websocket("/ws/{client_id}")
