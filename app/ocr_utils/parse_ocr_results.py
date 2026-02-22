@@ -213,7 +213,7 @@ def parse_mistral_ocr_response(response_dict: dict) -> List[Dict[str, Any]]:
 
             valid_rows = []
             narrations_batch = []
-
+            print("Parsed rows:", flat_rows)
             for row in flat_rows:
                 narration = row.get("Description/Narration", "").strip()
                 if not narration or narration.lower() == "total":
