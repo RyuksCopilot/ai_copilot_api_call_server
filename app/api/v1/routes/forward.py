@@ -62,7 +62,7 @@ async def upload_pdf(file: UploadFile = File(...)):
         f.write(content)
 
     ocr_results = mistral_ocr_results(file_path)
-
+    print("OCR Results:", ocr_results)  # Debug print to check OCR results
     dummy_response = parse_mistral_ocr_response(ocr_results)
 
 
